@@ -1,0 +1,78 @@
+<input type ="color">
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+    var corEscolhida = document.querySelector("input");
+
+    pincel.fillStyle = "lightblue";
+    pincel.fillRect(0, 0, 600, 400);
+
+    var a = 65;
+    var w = 87;
+    var d = 68;
+    var s = 83;
+    var g = 71;
+    var f = 70;
+
+
+    function limpaTela(){
+    	pincel.clearRect(0,0,600,400);
+    	pincel.fillStyle = "lightblue";
+    	pincel.fillRect(0, 0, 600, 400);
+    }
+
+    function desenhaCirculo(evento) {
+
+        if(desenha) {
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+            var z = 10;
+            pincel.fillStyle = corEscolhida.value;
+            pincel.beginPath();
+            pincel.arc(x, y, z, 0, 2 * 3.14);
+            pincel.fill();
+        }
+        console.log(x + "," + y);
+    }
+
+    function animaCirculo(x, y, z){
+    	pincel.fillStyle = corEscolhida.value;
+        pincel.beginPath();
+        pincel.arc(x, y, z, 0, 2 * 3.14);
+        pincel.fill();
+    }
+
+    x=20
+    y=20
+    z=5
+
+    function atualizaTela(){
+    	limpaTela();
+    	animaCirculo(x, y, z);
+    }
+
+
+    setInterval(atualizaTela, 2);
+
+    function leDoTeclado(evento) {
+
+        if(evento.keyCode == w) {
+            y = y - 10;
+        } else if (evento.keyCode == s) {
+            y = y + 10;
+        } else if (evento.keyCode == a) {
+            x = x - 10;
+        } else if (evento.keyCode == d) {
+            x = x + 10;
+        } else if(evento.keyCode == f){
+        	z = z + 10;
+        } else if(evento.keyCode == g){
+        	z = z-10;
+        }
+    }
+
+   document.onkeydown = leDoTeclado;
+</script>

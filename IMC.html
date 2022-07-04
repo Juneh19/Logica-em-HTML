@@ -1,0 +1,68 @@
+<meta charset="UTF-8">
+
+<script>
+
+	function pulaLinha() {
+		document.write("<br>");
+		document.write("<br>");
+	}
+	
+	function texto(msg) {
+		document.write(msg);
+		pulaLinha();
+	}
+
+	function calculaIMC(peso, altura){
+		return peso/ (altura*altura);
+		
+	}
+
+	var nome = prompt("Digite o seu nome: ");
+	var idade = prompt(nome + ", digite a sua idade: ");
+	var alturaInformarda = prompt(nome + ", informe a sua altura: ");
+	var pesoInformado = prompt(nome + ", informe o seu peso: ");
+	var imc = Math.round(calculaIMC(pesoInformado, alturaInformarda));
+	alert("Resultado calculado!");
+
+	texto("Nome: " + nome);
+	texto("Idade: " + idade);
+	texto("O seu IMC é: " + imc);
+
+	function pesoMaximo(altura, altura) {
+		return (altura*altura) * 25;
+	 }
+	var maximoPeso =Math.round(pesoMaximo(pesoInformado, alturaInformarda));
+	
+	function pesoMinimo(altura, altura) {
+	 	return (altura*altura) * 18.5;
+	 }
+	var minimoPeso = Math.round(pesoMinimo(pesoInformado, alturaInformarda));
+	
+	if(imc < 18.5){
+		texto("O seu IMC está abaixo do recomendado, sua classificação é Abaixo do Peso.");
+	}
+
+	if(imc > 40){
+		texto("O seu IMC está acima do recomendado, sua classificação é Obesidade Grau 3.");
+	}
+	
+
+	if(imc >= 18.5 && imc < 25){
+		texto("O seu IMC está no recomendado, sua classificação é Peso Normal.");
+	}
+
+	if(imc >= 25 && imc < 30){
+		texto("O seu IMC está acima do recomendado, sua classificação é Sobrepeso.");
+	}
+
+	if(imc >= 30 && imc < 35){
+		texto("O seu IMC está acima do recomendado, sua classificação é Obesidade Grau 1.");
+	}
+
+	if(imc >= 35 && imc < 40){
+		texto("O seu IMC está acima do recomendado, sua classificação é Obesidade Grau 2.");
+	}
+
+	texto("Considerando a sua altura, o seu peso ideal é entre " + minimoPeso + " e " + maximoPeso + ".");
+
+</script> 
